@@ -15,3 +15,9 @@ Route::get('/', function () {
 	return View::make('index');
     // return  view('hello');
 });
+
+// Route::get('users', ['users' => 'UsersController@index']);
+
+// Route::get('users', function() {
+
+// });

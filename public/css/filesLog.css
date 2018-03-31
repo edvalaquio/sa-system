@@ -1,0 +1,17 @@
+.log-form-panel{
+	padding: 0;
+	padding-bottom: 8px;
+	/*display: flex;*/
+}
+
+.log-form-panel span{
+	padding: 0px;
+}
+
+.log-form-filter{
+	padding-left: 100px;
+}
+
+.dropdown-menu{
+	padding: 5px;
+}

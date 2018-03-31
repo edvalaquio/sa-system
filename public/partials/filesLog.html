@@ -1,3 +1,43 @@
 <div class="container">
 	<h1>Here in filesLog</h1>
+	<div class="log-panel">
+		<div class="col-xs-12 log-form-panel">
+			<span class="col-xs-8 log-form-search">
+				<input type="text" name="" class="form-control" placeholder="Search">
+			</span>
+			<span class="col-xs-1 log-form-filter" uib-dropdown on-toggle="toggled(open)">
+				<button id="simple-dropdown" uib-dropdown-toggle class="btn btn-default col-xs-12">Filter</button>
+				<ul class="dropdown-menu col-xs-12" uib-dropdown-menu aria-labelledby="simple-dropdown">
+					<li><a>Date</a></li>
+					<li><a>Label</a></li>
+					<li><a>Received by</a></li>
+					<li><a>Sent by</a></li>
+					<li><a>Status</a></li>
+				</ul>
+			</span>
+			<span class="col-xs-1 pull-right log-form-add">
+				<button class="btn btn-success col-xs-12">Add</button>
+			</span>
+		</div>
+		<div class="log-table-panel">
+			<table class="table table-bordered log-table-main" style="width:100%">
+				<tr class="log-table-heading">
+					<th>Date</th>
+					<th>Label</th>
+					<th>Received By</th> 
+					<th>Sent By</th>
+					<th>Current Location</th>
+					<th>Status</th>
+				</tr>
+				<tr class="table-hover log-table-rows">
+					<td>03-31-2017</td>
+					<td>Request for Leave</td>
+					<td>Maricar</td>
+					<td>HumDiv</td> 
+					<td>Maricar</td>
+					<td>Approved (03-31-2017)</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </div>
