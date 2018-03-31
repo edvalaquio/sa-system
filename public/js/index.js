@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module("indexApp", 
+angular.module("indexApp",
 	["ngRoute",
 	"controllers.userController",
 	"controllers.filesLogController"])
@@ -17,10 +17,13 @@ angular.module("indexApp",
 		.when("/users", {
 			templateUrl: "/partials/users.html",
 			controller: "userController"
+		})
+		.when("/staff", {
+			templateUrl: "/partials/staff_home.html"
 		});
 
 		// .when("/", {
-		// 	templateUrl: "/partials/home.php", 
+		// 	templateUrl: "/partials/home.php",
 		// 	controller: "sample"
 		// })
 	}
