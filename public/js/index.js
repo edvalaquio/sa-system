@@ -19,6 +19,9 @@ angular.module("indexApp",
 			templateUrl: "/partials/users.html",
 			controller: "userController"
 		})
+		.when("/login", {
+			templateUrl: "/partials/login.html"
+		})
 		.when("/staff", {
 			templateUrl: "/partials/staff_home.html"
 		});
