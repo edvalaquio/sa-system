@@ -3,7 +3,8 @@
 angular.module("indexApp",
 	["ngRoute",
 	"controllers.userController",
-	"controllers.filesLogController"])
+	"controllers.filesLogController", 
+	"controllers.modalController"])
 .config(["$routeProvider", "$locationProvider",
 	function($routeProvider, $locationProvider){
 		$routeProvider
