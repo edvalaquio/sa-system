@@ -40,4 +40,10 @@
 			</table>
 		</div>
 	</div>
+	<div ng-controller="ModalDemoCtrl as $ctrl" class="modal-demo">
+	    <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>
+	    <div ng-show="$ctrl.selected">Selection from a modal: {{ $ctrl.selected }}</div>
+	    <div class="modal-parent">
+	    </div>
+	</div>
 </div>
