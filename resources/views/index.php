@@ -9,11 +9,10 @@
 </head>
 <body>
 	<nav class="navbar navbar-mod">
-		
+
 	</nav>
 	<!-- <h1>Document Management System for CAS Dean's office</h1> -->
 	<section class="" ng-view></section>
-
 
 	<script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
