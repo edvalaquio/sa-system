@@ -18,4 +18,9 @@ class MainController extends Controller
     public function filelog(){
       return view('index');
     }
+
+    public function logout(){
+      Auth::logout();
+      return redirect('/');
+    }
 }
