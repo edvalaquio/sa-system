@@ -14,4 +14,8 @@ class MainController extends Controller
         return view('login');
       }
     }
+
+    public function filelog(){
+      return view('index');
+    }
 }

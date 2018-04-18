@@ -12,3 +12,5 @@
 */
 
 Route::get('/', "MainController@index");
+
+Route::get('/main', "MainController@filelog");
