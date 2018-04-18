@@ -1,26 +1,26 @@
 'use strict';
 
 var modalModule = angular.module("controllers.modalController", [])
-modalModule.controller('ModalDemoCtrl', function ($uibModal, $log, $document) {
+modalModule.controller('modalController', function ($uibModal, $log, $document) {
 	var $ctrl = this;
-	$ctrl.items = ['item1', 'item2', 'item3'];
 
 	$ctrl.animationsEnabled = true;
 
-	$ctrl.open = function (size, parentSelector) {
-		var parentElem = parentSelector ? angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
+	$ctrl.open = function (template, data) {
+
+		$ctrl.data = data;
 		var modalInstance = $uibModal.open({
 			animation: $ctrl.animationsEnabled,
 			ariaLabelledBy: 'modal-title',
 			ariaDescribedBy: 'modal-body',
-			templateUrl: '../../partials/filesLogModal.html',
-			controller: 'ModalInstanceCtrl',
+			templateUrl: '/partials/' + template,
+			controller: 'modalInstanceController',
 			controllerAs: '$ctrl',
-			size: size,
-			appendTo: parentElem,
+			size: "",
+			appendTo: undefined,
 			resolve: {
 				items: function () {
-					return $ctrl.items;
+					return $ctrl.data;
 				}
 			}
 		});
@@ -28,7 +28,7 @@ modalModule.controller('ModalDemoCtrl', function ($uibModal, $log, $document) {
 		modalInstance.result.then(function (selectedItem) {
 			$ctrl.selected = selectedItem;
 		}, function () {
-			$log.info('Modal dismissed at: ' + new Date());
+			return;
 		});
 	};
 
@@ -39,15 +39,13 @@ modalModule.controller('ModalDemoCtrl', function ($uibModal, $log, $document) {
 
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
-modalModule.controller('ModalInstanceCtrl', function ($uibModalInstance, items) {
+modalModule.controller('modalInstanceController', function ($uibModalInstance, items) {
 	var $ctrl = this;
 	$ctrl.items = items;
-	$ctrl.selected = {
-		item: $ctrl.items[0]
-	};
+	console.log($ctrl.items);
 
 	$ctrl.ok = function () {
-		$uibModalInstance.close($ctrl.selected.item);
+		$uibModalInstance.close();
 	};
 
 	$ctrl.cancel = function () {

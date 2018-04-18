@@ -15,35 +15,38 @@
 					<li><a>Status</a></li>
 				</ul>
 			</span>
-			<span class="col-xs-1 pull-right log-form-add">
-				<button class="btn btn-success col-xs-12">Add</button>
+			<span ng-controller="modalController as $ctrl" class="pull-right log-form-button">
+				<button type="button" class="btn btn-success col-xs-12" ng-click="$ctrl.open('fileAddModal.html', false)"><span class="glyphicon glyphicon-plus"></span></button>
 			</span>
+			</div><!-- 
+			<span >
+				<button class="btn btn-success col-xs-12">Add</button>
+			</span> -->
 		</div>
 		<div class="log-table-panel">
-			<table class="table table-bordered log-table-main" style="width:100%">
-				<tr class="log-table-heading">
-					<th>Date</th>
-					<th>Label</th>
-					<th>Received By</th> 
-					<th>Sent By</th>
-					<th>Current Location</th>
-					<th>Status</th>
-				</tr>
-				<tr class="table-hover log-table-rows">
-					<td>03-31-2017</td>
-					<td>Request for Leave</td>
-					<td>Maricar</td>
-					<td>HumDiv</td> 
-					<td>Maricar</td>
-					<td>Approved (03-31-2017)</td>
-				</tr>
+			<table class="table table-hover table-bordered log-table-main" style="width:100%">
+				<thead>
+					<tr class="log-table-heading">
+						<th>Date</th>
+						<th>Label</th>
+						<th>Received By</th> 
+						<th>Sent By</th>
+						<th>Current Location</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-controller="modalController as $ctrl" class="log-table-rows" ng-repeat="file in filesData" ng-click="$ctrl.open('fileViewModal.html', file)">
+						<td>{{file.date}}</td>
+						<td>{{file.label}}</td>
+						<td>{{file.receiver}}</td>
+						<td>{{file.sender}}</td> 
+						<td>{{file.location}}</td>
+						<td>{{file.status}}</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
-	<div ng-controller="ModalDemoCtrl as $ctrl" class="modal-demo">
-	    <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>
-	    <div ng-show="$ctrl.selected">Selection from a modal: {{ $ctrl.selected }}</div>
-	    <div class="modal-parent">
-	    </div>
-	</div>
+
 </div>
