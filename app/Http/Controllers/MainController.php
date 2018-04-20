@@ -15,4 +15,13 @@ class MainController extends Controller
       // }
 	    return view('index');
     }
+
+    public function filelog(){
+      return view('index');
+    }
+
+    public function logout(){
+      Auth::logout();
+      return redirect('/');
+    }
 }

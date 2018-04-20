@@ -28,7 +28,8 @@
               Login
             </div>
             <div class="panel-body">
-              <form class="form-horizontal" action="index.html" method="post">
+              <form class="form-horizontal" action="{{ route('login') }}" method="post">
+                @csrf
                 <div class="form-group">
                   <label for="username " class="control-label col-md-4">Username: </label>
                   <div class="col-md-6">
@@ -39,13 +40,13 @@
                 <div class="form-group">
                   <label for="password" class="control-label col-md-4">Password: </label>
                   <div class="col-md-6">
-                    <input type="text" name="password" class="form-control">
+                    <input type="password" name="password" class="form-control">
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="text-center">
-                    <a href="#" class="btn btn-default btn-sm">Login</a>
+                    <input type="submit" name="submit" class="btn btn-default btn-sm" value="login"/>
                   </div>
                 </div>
               </form>
