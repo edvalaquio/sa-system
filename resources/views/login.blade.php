@@ -33,14 +33,24 @@
                 <div class="form-group">
                   <label for="username " class="control-label col-md-4">Username: </label>
                   <div class="col-md-6">
-                    <input type="text" name="username" value="" class="form-control">
+                    <input id="username" type="text" name="username" value="" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}">
+                    @if ($errors->has('username'))
+                      <span class="invalid-feedback">
+                        <strong>{{ $errors->first('username') }}</strong>
+                      </span>
+                    @endif
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="password" class="control-label col-md-4">Password: </label>
                   <div class="col-md-6">
-                    <input type="password" name="password" class="form-control">
+                    <input id="password" type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                    @if ($errors->has('password'))
+                      <span class="invalid-feedback">
+                        <strong>{{ $errors->first('password') }}</strong
+                      </span>
+                    @endif
                   </div>
                 </div>
 

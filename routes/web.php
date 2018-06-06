@@ -12,8 +12,13 @@
 */
 
 Route::get('/', "MainController@index");
+Route::get('main', "MainController@filelog");
+// admin routes
+Route::get('admin', "AdminController@index")->middleware('auth');
+Route::get('admin/addStaff', "AdminController@addStaff")->middleware('auth');
 
-Route::get('/main', "MainController@filelog");
+// staff routes
 
+// utility routes
 Route::get('logout', "MainController@logout");
 Auth::routes();

@@ -9,7 +9,9 @@ class MainController extends Controller
 {
     public function index(){
       if(Auth::check()){
-        return view('index');
+        if(Auth::user()->type == "admin"){
+          return redirect('/admin');
+        }
       }else{
         return view('login');
       }
