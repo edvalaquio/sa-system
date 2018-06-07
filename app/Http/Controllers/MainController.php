@@ -25,4 +25,24 @@ class MainController extends Controller
       Auth::logout();
       return redirect('/');
     }
+
+    public function home(){
+      return view('home');
+    }
+
+    public function sent(){
+      return view('sent');
+    }
+
+    public function received(){
+      return view('received');
+    }
+
+    public function accounts(){
+      return view('accounts');
+    }
+
+    public function transaction(){
+      return view('transaction');
+    }
 }
