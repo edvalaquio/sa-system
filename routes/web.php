@@ -19,6 +19,8 @@ Route::get('admin/addStaff', "AdminController@addStaff")->middleware('auth');
 
 // staff routes
 
+
 // utility routes
+Route::get('test', "MainController@testFunction");
 Route::get('logout', "MainController@logout");
 Auth::routes();
