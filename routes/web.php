@@ -11,6 +11,13 @@
 |
 */
 
+// Temporary routes
+Route::get('home', "MainController@home");
+Route::get('sent', "MainController@sent");
+Route::get('received', "MainController@received");
+Route::get('accounts', "MainController@accounts");
+Route::get('transaction', "MainController@transaction");
+
 Route::get('/', "MainController@index");
 Route::get('main', "MainController@filelog");
 // admin routes

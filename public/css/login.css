@@ -1,0 +1,10 @@
+.img-responsive{
+	height: 60px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container{
+	margin-top: 70px;
+}
