@@ -20,6 +20,9 @@ Route::get('transaction', "MainController@transaction");
 
 Route::get('/', "MainController@index");
 Route::get('main', "MainController@filelog");
+
+// first run add user
+Route::get('/addAdmin', "MainController@addFirstUser");
 // admin routes
 Route::get('admin', "AdminController@index")->middleware('auth');
 Route::get('admin/addStaff', "AdminController@addStaff")->middleware('auth');
