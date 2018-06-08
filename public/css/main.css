@@ -144,3 +144,9 @@ ul.navbar-nav.ml-auto > li > a{
 .error.helper-text{
 	color: #f50057;
 }
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after,
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after{
+	background-color: #ffab00;
+	border-color: #ffab00;
+}
