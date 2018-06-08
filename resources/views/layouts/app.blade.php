@@ -21,11 +21,14 @@
     <div id="app">
         <nav class="pink darken-4">
             <div class="nav-wrapper">
-                <a class="brand-logo left" href="{{ url('/home') }}">CAS DMS</a>
+                <a class="brand-logo left" href="{{ url('/home') }}">
+                    <img src="{{ asset('images/uplogo.png') }}">
+                    <span>CAS</span>
+                    <span>DMS</span>
+                </a>
                 <ul class="right">
                     @guest
-                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                        <li><a class="nav-link" href="{{ url('/') }}">{{ __('Login') }}</a></li>
                     @else
                         <li><a href="/received" class="nav-link received"><i class="material-icons">inbox</i> Received</a></li>
                         <li><a href="/sent" class="nav-link sent"><i class="material-icons">near_me</i> Sent</a></li>
