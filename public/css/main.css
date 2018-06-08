@@ -1,3 +1,25 @@
+nav .brand-logo{
+	font: normal 1.5em "Roboto";
+	letter-spacing: 0.25em;
+	text-align: center;
+	margin: 10px 0;
+	display: inline-flex;
+	align-items: center;
+}
+
+.brand-logo > :first-child{
+	height: 40px;
+	margin-right: 0.5em;
+}
+
+.brand-logo span:nth-child(2){
+	color: #43a047;
+}
+
+.brand-logo span:last-child{
+	color: #ffba33;
+}
+
 .navbar-mod{
 	background-color: #701217;
 	border-radius: 0px; 
