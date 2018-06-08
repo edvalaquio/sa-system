@@ -11,7 +11,7 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col sm12 m4 offset-m4 l5 offset-l2 v-center">
+				<div class="col sm12 m4 offset-m4 l4 offset-l4 v-center">
 					<form class="form-horizontal" action="{{ route('login') }}" method="post">
 						<img id="logo" src="{{ asset('/images/uplogo.png') }}" alt="logo">
 						<h1><span>CAS</span><span>DMS</span></h1>
