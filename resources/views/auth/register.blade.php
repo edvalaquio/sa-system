@@ -33,8 +33,13 @@
 
 
                     <div class="input-field">
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-                        <label for="name">Username</label>
+                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+                        <label for="username">Username</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
+                        <label for="name">Name</label>
                     </div>
 
                     @if ($errors->has('name'))
@@ -44,11 +49,11 @@
                     <label class="amber-text">Gender</label>
                     <div class="radio-buttons">
                         <label>
-                            <input type="radio" value="female" name="gender" checked> 
+                            <input type="radio" value="female" name="gender" checked>
                             <span>Female</span>
                         </label>
                         <label>
-                            <input type="radio" value="male" name="gender"> 
+                            <input type="radio" value="male" name="gender">
                             <span>Male</span>
                         </label>
                     </div>
