@@ -38,9 +38,7 @@
                     </div>
 
                     @if ($errors->has('name'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
+                        <span class="helper-text error">{{ $errors->first('name') }}</span>
                     @endif
 
                     <label class="amber-text">Gender</label>
@@ -61,9 +59,7 @@
                     </div>
 
                     @if ($errors->has('email'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                        <span class="helper-text error">{{ $errors->first('email') }}</span>
                     @endif
 
                     <div class="input-field">
