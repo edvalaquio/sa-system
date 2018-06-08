@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Admins extends Model
+class Tag extends Model
 {
     protected $fillable = [
-        'user_id', 'group',
-    ];
-}
+        'name',
+    ]
+};

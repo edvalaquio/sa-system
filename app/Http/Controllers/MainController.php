@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\File;
+use App\User;
 
 
 class MainController extends Controller
@@ -42,6 +44,20 @@ class MainController extends Controller
     }
     public function home(){
       return view('home');
+    }
+
+    public function addFirstUser(){
+        $user = User::create([
+            'name' => 'admin',
+            'email' => 'admin',
+            'username' => 'admin',
+            'gender' => 'male',
+            'type' => 'admin',
+            'password' => Hash::make('admin1'),
+        ]);
+        Auth::login($user, true);
+        return redirect('/');
+
     }
 
     public function sent(){
