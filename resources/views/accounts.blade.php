@@ -37,6 +37,30 @@
             transform: translate(0, 1em) scale(0.8,0.8);
             cursor: pointer;
         }
+
+        .modal-content{
+            margin-top: 0;
+        }
+
+        #add-modal{
+            top: 2.5%!important;
+        }
+
+        #add-modal h5{
+            margin-top: 0;
+        }
+
+        @media screen and (min-width: 600px){
+            #add-modal{
+                width: 50%;
+            }
+        }
+
+        @media screen and (min-width: 800px){
+            #add-modal{
+                width: 33%;
+            }
+        }
     </style>
 @endpush
 
@@ -68,7 +92,7 @@
 </div>
 <div id="add-modal" class="modal">
     <div class="modal-content">
-        <h4>Add Account</h4>
+        <h5>Add Account</h5>
         <form method="POST" action="{{ route('register') }}" id="register-form">
             @csrf
 
@@ -90,6 +114,14 @@
             </div>
 
 
+            <div class="input-field">
+                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                <label for="email">E-mail Address</label>
+                @if ($errors->has('email'))
+                    <span class="helper-text error">{{ $errors->first('email') }}</span>
+                @endif
+            </div>
+
             <div class="radio-buttons">
                 <label>Gender</label>
                 <label>
@@ -102,16 +134,19 @@
                 </label>
             </div>
 
-            <div class="input-field">
-                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-                <label for="email">E-mail Address</label>
-                @if ($errors->has('email'))
-                    <span class="helper-text error">{{ $errors->first('email') }}</span>
-                @endif
+            <div class="radio-buttons">
+                <label>Type</label>
+                <label id="admin">
+                    <input type="radio" value="admin" name="type" checked>
+                    <span>Admin</span>
+                </label>
+                <label id="staff">
+                    <input type="radio" value="staff" name="type">
+                    <span>Staff</span>
+                </label>
             </div>
 
-
-            <div class="input-field">
+            <div class="input-field" id="group-field">
                 <input id="group" type="text" class="form-control{{ $errors->has('group') ? ' is-invalid' : '' }}" name="group" value="{{ old('group') }}" required>
                 <label for="group">Group</label>
             </div>
@@ -132,7 +167,7 @@
                 <label for="password-confirm">Confirm Password</label>
             </div>
 
-            <button type="submit" id="register" class="btn btn-block amber accent-4 disabled hidden"> Register </button>
+            <button type="submit" id="register" class="btn btn-block amber accent-4 disabled"> Register </button>
         </form>
     </div>
 </div>
@@ -149,10 +184,8 @@
         function validateForm(){
             if (validUsername() && validName() && validEmail() && validGroup() && validPassword() && validConfirmPass()){
                 $("#register").removeClass("disabled")
-                $("#register").slideDown()
             } else {
                 $("#register").addClass("disabled")
-                $("#register").slideUp()
             }
         }  
 
@@ -217,6 +250,9 @@
 
         function showPassword(target){ $(target + " ~ input[type='password']").eq(0).attr("type", "text") }
         function hidePassword(target){ $(target + " ~ input[type='text']").eq(0).attr("type", "password") }
+
+        $("#admin").click(function(){$("#group-field").slideDown(150)})
+        $("#staff").click(function(){$("#group-field").slideUp(150)})
         
     </script>
 @endpush

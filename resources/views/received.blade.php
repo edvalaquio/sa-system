@@ -39,14 +39,34 @@
         <a href="#" class="modal-close close-btn"><i class="material-icons">clear</i></a>
 
         <form>
+            <div class="file-field input-field">
+                <div class="btn btn-large amber accent-4">
+                    <span><i class="material-icons">attach_file</i></span>
+                    <input type="file" name="file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="ATTACH A FILE (optional)">
+                </div>
+            </div>
+
             <div class="input-field">
                 <input type="text" id="title" name="title">
                 <label for="title">Title</label>
             </div>
+
             <div class="input-field">
                 <textarea class="materialize-textarea" id="description" name="description" placeholder="OPTIONAL"></textarea>
                 <label for="description">Description</label>
             </div>
+
+            <div class="input-field">
+                <input type="text" id="recipient" name="recipient">
+                <label for="recipient">Recipient</label>
+            </div>
+
+            <label>Tags</label>
+            <div class="chips chips-autocomplete"></div>
+
             <button class="btn btn-large green waves-effect waves-light" id="confirm-add" type="submit"><i class="material-icons">add</i></button>
         </form>
     </div>
@@ -57,6 +77,35 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $(".modal").modal()
+
+         $('.chips').chips()
+
+        $('.chips-initial').chips({
+            data: [{
+              tag: 'Apple',
+            }, {
+              tag: 'Microsoft',
+            }, {
+              tag: 'Google',
+            }],
+        })
+
+        $('.chips-placeholder').chips({
+            placeholder: 'Enter a tag',
+            secondaryPlaceholder: '+Tag',
+        })
+
+        $('.chips-autocomplete').chips({    
+            autocompleteOptions: {
+              data: {
+                'Apple': null,
+                'Microsoft': null,
+                'Google': null
+              },
+              limit: Infinity,
+              minLength: 1
+            }
+        })
     })
 </script>
 @endpush

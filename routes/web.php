@@ -14,8 +14,8 @@
 // Main Routes
 Route::get('/', "MainController@index");
 Route::get('home', "HomeController@index");
-Route::get('sent', "MainController@index");
-Route::get('received', "ReceivedController@index");
+Route::get('sent', "SendController@index");
+Route::get('received', "ReceiveController@index");
 Route::get('accounts', "AccountController@index");
 Route::get('transaction', "TransactionController@index");
 Route::get('test', "MainController@testFunction");

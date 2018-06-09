@@ -29,6 +29,7 @@
                     @guest
                         <li><a class="nav-link" href="{{ url('/') }}">{{ __('Login') }}</a></li>
                     @else
+                        <li><a href="/home" class="pink-text text-darken-1"><i class="material-icons">home</i></a></li>
                         <li><a href="/received" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
                         <li><a href="/sent" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
                         <li><a href="/accounts" class="pink-text text-darken-1"><i class="material-icons">group</i></a></li>
