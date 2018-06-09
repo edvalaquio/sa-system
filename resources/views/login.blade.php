@@ -1,60 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  	<link rel="stylesheet" type="text/css" href="/css/style.css">
-  	<link rel="stylesheet" type="text/css" href="/css/filesLog.css">
-    <style media="screen">
-      .img-responsive{
-        height: 60px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-mod">
-      <img class="img-responsive" src="{{ asset('/images/logo.png') }}" alt="">
-  	</nav>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/css/materialize.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+		<link rel="stylesheet" type="text/css" href="/css/login.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col sm12 m4 offset-m4 l4 offset-l4 v-center">
+					<form class="form-horizontal" action="{{ route('login') }}" method="post">
+						<img id="logo" src="{{ asset('/images/uplogo.png') }}" alt="logo">
+						<h1><span>CAS</span><span>DMS</span></h1>
+						@csrf
+						<section class="input-field">
+							<i class="material-icons prefix small">account_circle</i>
+							<input id="username" type="text" name="username" value="" placeholder="USERNAME" class="validate form-control{{ $errors->has('username') ? ' is-invalid' : '' }}">
+							<!-- <label for="username">Username</label> -->
+							@if ($errors->has('username'))
+							  <span class="error helper-text">{{ $errors->first('username') }}</span>
+							@endif
+						</section>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              Login
-            </div>
-            <div class="panel-body">
-              <form class="form-horizontal" action="{{ route('login') }}" method="post">
-                @csrf
-                <div class="form-group">
-                  <label for="username " class="control-label col-md-4">Username: </label>
-                  <div class="col-md-6">
-                    <input type="text" name="username" value="" class="form-control">
-                  </div>
-                </div>
+						<section class="input-field">
+							<i class="material-icons prefix small">lock</i>
+							<input id="password" type="password" name="password" placeholder="PASSWORD" class="validate form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+							<!-- <label for="password">Password</label> -->
+							@if ($errors->has('password'))
+							  <span class="error helper-text">{{ $errors->first('password') }}</span>
+							@endif
+						</section>
 
-                <div class="form-group">
-                  <label for="password" class="control-label col-md-4">Password: </label>
-                  <div class="col-md-6">
-                    <input type="password" name="password" class="form-control">
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="text-center">
-                    <input type="submit" name="submit" class="btn btn-default btn-sm" value="login"/>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </body>
+						<button class="btn btn-block btn-default amber accent-4" name="submit" type="submit">login</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/materialize.min.js"></script>
+	</body>
 </html>

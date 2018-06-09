@@ -11,9 +11,26 @@
 |
 */
 
+// Temporary routes
+Route::get('home', "MainController@home");
+Route::get('sent', "MainController@sent");
+Route::get('received', "MainController@received");
+Route::get('accounts', "MainController@accounts");
+Route::get('transaction', "MainController@transaction");
+
 Route::get('/', "MainController@index");
+Route::get('main', "MainController@filelog");
 
-Route::get('/main', "MainController@filelog");
+// first run add user
+Route::get('/addAdmin', "MainController@addFirstUser");
+// admin routes
+Route::get('admin', "AdminController@index")->middleware('auth');
+Route::get('admin/addStaff', "AdminController@addStaff")->middleware('auth');
 
+// staff routes
+
+
+// utility routes
+Route::get('test', "MainController@testFunction");
 Route::get('logout', "MainController@logout");
 Auth::routes();

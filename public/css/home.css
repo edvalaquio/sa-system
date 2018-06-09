@@ -1,0 +1,70 @@
+.card-body{
+	padding: 0.75rem 1.25rem;
+}
+
+.card{
+	margin-bottom: 0.5em;
+}
+
+.status{
+	position: absolute;
+	top: 0.75rem;
+	right: 1.25rem;
+	color: white;
+	padding: 0 0.75em;
+	border-radius: 0.75em;
+	font-weight: bold;
+	font-size: 0.8em;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	background-color: #546E7A;
+}
+
+.status.pending{ background-color: #FDD835; }
+.status.complete{ background-color: #C0CA33; }
+
+.type,
+.timestamp{
+	font-family: Roboto;
+	color: rgba(0,0,0,0.5);
+	display: inline-flex;
+	align-items: center;
+}
+
+.type.received{	color: #00ACC1; }
+.type.sent{ color: #CDDC39; }
+
+.timestamp{
+	margin-left: 0.1em;
+}
+
+.additional-details{
+	display: flex;
+	align-items: center;
+}
+
+.title{
+	width: calc(100% - 90px);
+	display: flex;
+	font-weight: normal;
+	color: #00BCD4;
+}
+
+.title h4{
+	line-height: 1.6em;
+	margin-top: 0;
+	font-size: 1.5em;
+	margin-bottom: 0;
+}
+
+.particular{
+	margin: 0;
+	font-family: Roboto;
+	color: #888;
+}
+
+.truncate{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
