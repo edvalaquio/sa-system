@@ -11,19 +11,16 @@
 |
 */
 
-// Temporary routes
-Route::get('home', "MainController@home");
-Route::get('sent', "MainController@sent");
-Route::get('received', "MainController@received");
-Route::get('accounts', "MainController@accounts");
-Route::get('transaction', "MainController@transaction");
-
+// Main Routes
+Route::get('/', "MainController@index");
+Route::get('home', "HomeController@index");
+Route::get('sent', "MainController@index");
+Route::get('received', "ReceivedController@index");
+Route::get('accounts', "AccountController@index");
+Route::get('transaction', "TransactionController@index");
 Route::get('test', "MainController@testFunction");
 Route::post('testPut', "AdminController@addStaff");
 
-// #######################################################
-Route::get('/', "MainController@index");
-Route::get('main', "MainController@filelog");
 
 // first run add user
 Route::get('/addAdmin', "MainController@addFirstUser");

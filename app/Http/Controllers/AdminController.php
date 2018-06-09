@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
 // will handle the initial landing page for admin user
     public function index(){
-      return view('admin.home');
+      return view('home');
     }
 
     public function addStaff(){
