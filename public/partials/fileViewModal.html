@@ -1,46 +1,66 @@
-<div class="modal-header" ng-init="edit = false">
-    <h3 class="modal-title" id="modal-title">
-        <span ng-if="edit">Edit</span> 
-        <span ng-if="!edit">View</span> 
-        Document
-    </h3>
-</div>
-<div class="modal-body" id="modal-body">
-    <div class="log-modal-view">
-        <button class="btn pull-left" ng-click="edit = !edit" ng-class="{'btn-primary': !edit, 'btn-danger': edit}">
-            <span ng-if="!edit">Edit</span>
-            <span ng-if="edit">Cancel</span>
-        </button>
-        <div class="col-xs-12">
-            <label class="">Label</label>
-            <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.label">
-            <p ng-if="!edit">: {{$ctrl.items.label}}</p>
-        </div>
-        <div class="col-xs-12">
-            <label class="">Receiver</label>
-            <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.receiver">
-            <p ng-if="!edit">: {{$ctrl.items.receiver}}</p>
-        </div>
-        <div class="col-xs-12">
-            <label class="">Sender</label>
-            <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.sender">
-            <p ng-if="!edit">: {{$ctrl.items.sender}}</p>
-        </div>
-        <div class="col-xs-12">
-            <label class="">Particulars</label>
-            <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.particulars">
-            <p ng-if="!edit">: {{$ctrl.items.particulars}}</p>
-        </div>
-        <div class="col-xs-12">
-            <label class="">Tags</label>
-            <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.tags">
-            <p ng-if="!edit">: {{$ctrl.items.tags}}</p>
-        </div>
+<div class="fileModal" ng-controller="fileModalController as $documents">
+    <div class="modal-header" ng-init="edit = false">
+        <h3 class="modal-title" id="modal-title">
+            <span ng-if="edit">Edit</span> 
+            <span ng-if="!edit">View</span> 
+            Document
+        </h3>
     </div>
-    <!-- <form class="log-modal-add">
-    </form> -->
-</div>
-<div class="modal-footer">
-    <button class="btn btn-success" type="button" ng-click="$ctrl.ok()">OK</button>
-    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    <div class="modal-body" id="modal-body">
+        <div class="log-modal-view">
+            <button class="btn pull-left" ng-click="edit = !edit" ng-class="{'btn-primary': !edit, 'btn-danger': edit}">
+                <span ng-if="!edit">Edit</span>
+                <span ng-if="edit">Cancel</span>
+            </button>
+            <div class="col-xs-12">
+                <label class="">Label</label>
+                <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.label">
+                <p ng-if="!edit">: {{$ctrl.items.label}}</p>
+            </div>
+            <div class="col-xs-12">
+                <label class="">Receiver</label>
+                <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.receiver">
+                <p ng-if="!edit">: {{$ctrl.items.receiver}}</p>
+            </div>
+            <div class="col-xs-12">
+                <label class="">Sender</label>
+                <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.sender">
+                <p ng-if="!edit">: {{$ctrl.items.sender}}</p>
+            </div>
+            <div class="col-xs-12">
+                <label class="">Particulars</label>
+                <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.particulars">
+                <p ng-if="!edit">: {{$ctrl.items.particulars}}</p>
+            </div>
+            <div class="col-xs-12">
+                <label class="">Tags</label>
+                <input ng-if="edit" type="text" class="form-control" ng-model="$ctrl.items.tags">
+                <p ng-if="!edit">: {{$ctrl.items.tags}}</p>
+            </div>
+            <div class="col-xs-12">
+                <label class="">Status</label>
+                <select ng-model="$ctrl.items.status" ng-if="edit">
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Disapproved">Disapproved</option>
+                    <option value="Noted">Noted</option>
+                </select>
+                <p ng-if="!edit">: {{$ctrl.items.status}}</p>
+            </div>
+            <div class="col-xs-12" ng-if="$ctrl.items.status == 'Approved' || $ctrl.items.status == 'Disapproved'">      
+                <label class="">File</label>
+                <input type="file" name="" ng-if="edit">
+                <p ng-if="!edit">: 
+                    <a href="">{{$ctrl.items.document}}</a>
+                </p>
+            </div>
+        </div>
+        <!-- <form class="log-modal-add">
+        </form> -->
+    </div>
+    <div class="modal-footer">
+        <button ng-if="!edit" class="btn btn-success" type="button" ng-click="$ctrl.ok()">OK</button>
+        <button ng-if="edit" class="btn btn-success" type="button" ng-click="$documents.editDocument($ctrl)">Submit</button>
+        <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    </div>
 </div>

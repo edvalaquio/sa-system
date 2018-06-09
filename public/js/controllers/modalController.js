@@ -7,7 +7,6 @@ modalModule.controller('modalController', function ($uibModal, $log, $document) 
 	$ctrl.animationsEnabled = true;
 
 	$ctrl.open = function (template, data) {
-
 		$ctrl.data = data;
 		var modalInstance = $uibModal.open({
 			animation: $ctrl.animationsEnabled,
@@ -42,9 +41,12 @@ modalModule.controller('modalController', function ($uibModal, $log, $document) 
 modalModule.controller('modalInstanceController', function ($uibModalInstance, items) {
 	var $ctrl = this;
 	$ctrl.items = items;
-	console.log($ctrl.items);
 
 	$ctrl.ok = function () {
+		$uibModalInstance.close();
+	};
+
+	$ctrl.submit = function () {
 		$uibModalInstance.close();
 	};
 

@@ -1,58 +1,22 @@
 'use strict';
 var filesLog = angular.module("controllers.filesLogController", ['ui.bootstrap'])
 
-filesLog.controller("filesLogController", ["$rootScope", "$scope", "$window", "$location",
-	function($rootScope, $scope, $window, $location){
+filesLog.controller("filesLogController", ["$rootScope", "$scope", "$window", "$location", "$http",
+	function($rootScope, $scope, $window, $location, $http){
 		console.log("Here in filesLogController");
 
-		$scope.filesData = [
-			{	
-				date 		: "1-Feb-18",
-				label 		: "Request", 
-				receiver	: "Maricar",
-				sender 		: "UPV Mathematics Circle", 
-				location 	: "Checked Out",
-				notes 		: "request to hold Interschool Math Quiz Bee at UPV GCEB on 13-14 February 2018",
-				tags 		: ["doc1", "doc2", "doc3"], 
-				status 		: "Approved",
-				pickup 		: "Ms Isonza", 
-				document 	: ":////{filePath}"
-			},
-			{	
-				date 		: "1-Feb-18",
-				label 		: "Request", 
-				receiver	: "Maricar",
-				sender 		: "SEC",
-				location 	: "Checked Out",
-				notes 		: "reimbursement for payment of digi stamps and ink stamp pad",
-				tags 		: ["doc1", "doc2", "doc3"], 
-				status 		: "Noted",
-				document 	: ":////{filePath}"
-			},
-			{	
-				date 		: "5-Feb-18",
-				label 		: "Progress Report", 
-				receiver	: "Maricar",
-				sender 		: "Chemistry",
-				particular 	: "Concepcion Ponce", 
-				location 	: "Maricar",
-				notes 		: "progress report for the project Highly Luminiscent N-doped etc…",
-				tags 		: ["doc1", "doc2", "doc3"], 
-				status 		: "Rejected",
-				document 	: ":////{filePath}"
-			},
-			{	
-				date 		: "5-Feb-18",
-				label 		: "Request", 
-				receiver	: "Maricar",
-				sender 		: "Jorge Ebay",
-				particular 	: "Randy Madrid", 
-				location 	: "Susan",
-				notes 		: "request TO: Carles on 2-5 February 2018",
-				tags 		: ["doc1", "doc2", "doc3"], 
-				status 		: "Pending",
-			},
-		];
+		if(!$window.localStorage['filesData']){
+			$http({
+				'method'	: 'GET', 
+				'url'		: '/js/transactions.json',
+			}).then(function(res){
+				console.log(res.data);
+				$window.localStorage['filesData'] = JSON.stringify(res.data);
+			}, function(error){
+				console.log(error);
+			});
+		}
+		$scope.filesData = JSON.parse($window.localStorage['filesData']);
 
 		$scope.dropDownStatus = {
 			isopen: false
@@ -65,5 +29,36 @@ filesLog.controller("filesLogController", ["$rootScope", "$scope", "$window", "$
 		};
 
 		$scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+	}	
+]);
+
+filesLog.controller("fileModalController", ["$rootScope", "$scope", "$window", "$location", "$http",
+	function($rootScope, $scope, $window, $location, $http){
+		console.log("Here in fileModalController");
+		var $documents = this;
+
+		$documents.addDocument = function($ctrl){
+			var tempJSON = JSON.parse($window.localStorage['filesData']);
+			var newID = tempJSON.length;
+			$documents.tags = $documents.tags.split(',');
+			tempJSON.push({
+				'id'			: newID,
+				'date'			: new Date(),
+				'label'			: $documents.label,
+				'receiver'		: $documents.receiver,
+				'sender'		: $documents.sender,
+				'particulars'	: $documents.particulars,
+				'location'		: 'Maricar',
+				'tags'			: $documents.tags,
+				'status'		: 'Pending'
+			});
+			$window.localStorage['filesData'] = JSON.stringify(tempJSON);
+    		$ctrl.ok();
+    		$window.location.href = "#!/filesLog/"
+   		}
+
+   		$documents.editDocument = function($ctrl){
+   			console.log($ctrl.items);
+   		}
 	}	
 ]);
