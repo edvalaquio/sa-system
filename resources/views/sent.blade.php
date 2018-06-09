@@ -6,9 +6,9 @@
 
 @section('content')
 <div class="toolbar">
-    <div class="input-group searchbar-container">
-        <input type="text" id="search-bar" name="keyword" class="form-control" placeholder="Search...">
-        <button class="btn btn-primary" type="submit">
+    <div class="searchbar-container">
+        <input type="text" id="search-bar" name="keyword" placeholder="Search...">
+        <button class="btn-floating light-green" type="submit">
             <i class="material-icons">search</i>
         </button>
     </div>

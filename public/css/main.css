@@ -7,6 +7,10 @@ nav .brand-logo{
 	align-items: center;
 }
 
+nav .nav-wrapper{
+	padding: 0 0 01em;
+}
+
 .brand-logo > :first-child{
 	height: 40px;
 	margin-right: 0.5em;
@@ -18,36 +22,6 @@ nav .brand-logo{
 
 .brand-logo span:last-child{
 	color: #ffba33;
-}
-
-.navbar-mod{
-	background-color: #701217;
-	border-radius: 0px; 
-	height: 70px;
-}
-
-ul.navbar-nav.ml-auto > li > a{
-	display: inline-flex;
-	align-items: center;
-	margin-left: 0.15em;
-}
-
-.navbar-light .navbar-nav .nav-link.received{ color: #00ACC1; }
-.navbar-light .navbar-nav .nav-link.sent{ color: #CDDC39; }
-
-.searchbar-container{
-	margin-bottom: 10px;
-}
-
-#search-bar + button{
-	border-radius: 0 4px 4px 0;
-	display: inline-flex;
-	align-items: center;
-}
-
-.btn-success{
-	background-color: #7CB342;
-	border: none;
 }
 
 #add-button{
@@ -77,15 +51,39 @@ ul.navbar-nav.ml-auto > li > a{
 .toolbar{
 	display: flex;
 	width: 100%;
-	border-bottom: 1px solid #DDD;
+	/*border-bottom: 1px solid #DDD;*/
+	box-shadow: 0 0 7px rgba(0,0,0,0.2);
 	position: relative;
 	background-color: white;
-	transform: translate(0, -1.5rem);
 	padding: 0.75rem 1em;
+	margin-bottom: 20px;
 }
 
 .toolbar .searchbar-container{
-	width: 30%;
+	width: 40%;
+	display: flex;
+}
+
+#search-bar{
+	height: unset;
+	margin-bottom: 0;
+	border-bottom: 0;
+	box-shadow: 0 0 7px rgba(0,0,0,0.2);
+	border-radius: 4px;
+	padding-left: 0.75em;
+	margin-right: 0.5rem;
+}
+
+.toolbar .searchbar-container button{
+	width: 3.8em!important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn-success{
+	background-color: #7CB342;
+	border: none;
 }
 
 .btn-block{
@@ -171,4 +169,8 @@ ul.navbar-nav.ml-auto > li > a{
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after{
 	background-color: #ffab00;
 	border-color: #ffab00;
+}
+
+.hidden{
+	display: none;
 }
