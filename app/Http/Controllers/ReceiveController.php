@@ -14,7 +14,7 @@ class ReceiveController extends Controller
     public function createReceive(Request $request){
         $document = false;
         if ($request->hasFile('file')) {
-            document = true;
+            $document = true;
         }
         $transaction = Transaction::create([
             'title' => $request->title,
