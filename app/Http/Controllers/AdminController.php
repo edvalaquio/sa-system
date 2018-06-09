@@ -51,5 +51,10 @@ class AdminController extends Controller
         return true;
     }
 
+    public function viewUser($userid){
+        $user = User::find($user);
+
+    }
+
 
 }
