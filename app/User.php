@@ -16,7 +16,7 @@ class User extends Authenticatable
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'type', 'gender',
+        'name', 'email', 'password', 'username', 'type', 'gender', 'status',
     ];
 
     /**
@@ -27,4 +27,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getType(){
+        if($this->type == 'admin'){
+            return $this->hasOne('App\Admin');
+        }
+        elseif ($this->type == 'staff') {
+            return $this->hasOne('App\Staff');
+        }
+    }
 }

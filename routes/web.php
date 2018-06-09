@@ -18,6 +18,10 @@ Route::get('received', "MainController@received");
 Route::get('accounts', "MainController@accounts");
 Route::get('transaction', "MainController@transaction");
 
+Route::get('test', "MainController@testFunction");
+Route::post('testPut', "AdminController@addStaff");
+
+// #######################################################
 Route::get('/', "MainController@index");
 Route::get('main', "MainController@filelog");
 
@@ -31,6 +35,5 @@ Route::get('admin/addStaff', "AdminController@addStaff")->middleware('auth');
 
 
 // utility routes
-Route::get('test', "MainController@testFunction");
 Route::get('logout', "MainController@logout");
 Auth::routes();
