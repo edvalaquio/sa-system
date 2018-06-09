@@ -174,3 +174,14 @@ nav .nav-wrapper{
 .hidden{
 	display: none;
 }
+
+.close-btn{
+	position: absolute;
+	top: calc(24px + 0.45em);
+	right: 24px;
+	color: #ad1457;
+}
+
+.modal{
+	max-height: unset;
+}

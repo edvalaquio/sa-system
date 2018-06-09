@@ -1,23 +1,18 @@
-.card-body{
-	padding: 0.75rem 1.25rem;
-}
-
-.card{
-	margin-bottom: 0.5em;
-}
+.card-body{ padding: 0.75rem 1.25rem; }
+.card{ margin-bottom: 0.5em; }
 
 .status{
-	position: absolute;
-	top: 0.75rem;
-	right: 1.25rem;
-	color: white;
-	padding: 0 0.75em;
-	border-radius: 0.75em;
-	font-weight: bold;
-	font-size: 0.8em;
-	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	background-color: #546E7A;
+	border-radius: 0.75em;
+	letter-spacing: 0.1em;
+	font-family: Roboto;
+	position: absolute;
+	padding: 0 0.75em;
+	font-size: 0.85em;
+	right: 1.25rem;
+	top: 0.75rem;
+	color: white;
 }
 
 .status.pending{ background-color: #FDD835; }
@@ -25,46 +20,49 @@
 
 .type,
 .timestamp{
-	font-family: Roboto;
 	color: rgba(0,0,0,0.5);
 	display: inline-flex;
+	font-family: Roboto;
 	align-items: center;
 }
 
 .type.received{	color: #00ACC1; }
 .type.sent{ color: #CDDC39; }
 
-.timestamp{
-	margin-left: 0.1em;
-}
+.timestamp{ margin-left: 0.1em; }
 
 .additional-details{
-	display: flex;
 	align-items: center;
+	display: flex;
 }
 
 .title{
 	width: calc(100% - 90px);
-	display: flex;
 	font-weight: normal;
 	color: #00BCD4;
+	display: flex;
 }
 
 .title h4{
 	line-height: 1.6em;
-	margin-top: 0;
 	font-size: 1.5em;
 	margin-bottom: 0;
+	margin-top: 0;
 }
 
 .particular{
-	margin: 0;
 	font-family: Roboto;
 	color: #888;
+	margin: 0;
 }
 
 .truncate{
+	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;
+}
+
+#confirm-add{
+	margin-left: auto;
+	display: block;
 }

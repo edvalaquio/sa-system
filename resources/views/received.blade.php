@@ -12,7 +12,7 @@
             <i class="material-icons">search</i>
         </button>
     </div>
-    <a href="#" class="btn btn-success" id="add-button">
+    <a href="#" class="btn btn-success modal-trigger" id="add-button" data-target="add-modal">
         <i class="material-icons">add</i> Received 
     </a>
 </div>
@@ -33,4 +33,30 @@
         </div>
     </div>
 </div>
+<div id="add-modal" class="modal">
+    <div class="modal-content">
+        <h4>Add Received</h4>
+        <a href="#" class="modal-close close-btn"><i class="material-icons">clear</i></a>
+
+        <form>
+            <div class="input-field">
+                <input type="text" id="title" name="title">
+                <label for="title">Title</label>
+            </div>
+            <div class="input-field">
+                <textarea class="materialize-textarea" id="description" name="description" placeholder="OPTIONAL"></textarea>
+                <label for="description">Description</label>
+            </div>
+            <button class="btn btn-large green waves-effect waves-light" id="confirm-add" type="submit"><i class="material-icons">add</i></button>
+        </form>
+    </div>
+</div>
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".modal").modal()
+    })
+</script>
+@endpush
