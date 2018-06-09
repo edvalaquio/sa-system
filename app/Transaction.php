@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    $fillable = [
+    protected $fillable = [
         'comment', 'has_document', 'title', 'description',
     ];
 
