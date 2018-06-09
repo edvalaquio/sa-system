@@ -12,26 +12,11 @@ use App\User;
 
 class MainController extends Controller
 {
-    public function index(){
-      if(Auth::check()){
-        if(Auth::user()->type == "admin"){
-          return redirect('/admin');
-        }
-      }else{
-        return view('login');
-      }
-    }
-
-    public function filelog(){
-      return view('index');
-    }
-
-    public function logout(){
-      Auth::logout();
-      return redirect('/');
-    }
-
+    // test function
     public function testFunction(){
+        return view('test');
+    }
+    public function testing(){
         $path = 'MP1CV.pdf';
         $content = Storage::get('MP1CV.pdf');
         if (Storage::exists('MP1CV.pdf')) {
@@ -42,8 +27,24 @@ class MainController extends Controller
         return "False";
         $pdf = Storage::get('MP1 CV.pdf');
     }
-    public function home(){
-      return view('home');
+
+    public function index(){
+      if(Auth::check()){
+          if(Auth::user()->status != "deleted"){
+              if(Auth::user()->type == "admin"){
+                  return redirect('/home');
+              }
+          }else{
+              return view('accountDeleted');
+          }
+      }else{
+        return view('login');
+      }
+    }
+
+    public function logout(){
+      Auth::logout();
+      return redirect('/');
     }
 
     public function addFirstUser(){
@@ -60,19 +61,4 @@ class MainController extends Controller
 
     }
 
-    public function sent(){
-      return view('sent');
-    }
-
-    public function received(){
-      return view('received');
-    }
-
-    public function accounts(){
-      return view('accounts');
-    }
-
-    public function transaction(){
-      return view('transaction');
-    }
 }
