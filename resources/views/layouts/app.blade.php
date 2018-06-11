@@ -18,35 +18,36 @@
 </head>
 <body>
     <div id="app">
-        <nav class="pink darken-4">
-            <div class="nav-wrapper">
-                <a class="brand-logo left" href="{{ url('/home') }}">
-                    <img src="{{ asset('images/uplogo_sm.png') }}">
-                    <span>CAS</span>
-                    <span>DMS</span>
-                </a>
-                <ul class="right">
-                    @guest
-                        <li><a class="nav-link" href="{{ url('/') }}">{{ __('Login') }}</a></li>
-                    @else
-                        <li><a href="#!/" class="pink-text text-darken-1"><i class="material-icons">home</i></a></li>
-                        <li><a href="#!/filesLog" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
-                        <li><a href="#!/users" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
-                        <li><a href="#!/staff" class="pink-text text-darken-1"><i class="material-icons">group</i></a></li>
-                        <li>
-                            <a class="dropdown-trigger btn-flat grey-text text-lighten-3" data-target="options" href="#" role="button">
-                                {{ Auth::user()->name }} 
-                                <i class="material-icons right">arrow_drop_down</i>
-                            </a>
-                            <ul id="options" class='dropdown-content'>
-                                <li><a class="red-text" id="logout" href="{{ route('logout') }}"> Logout </a></li>
-                            </ul>
-                        </li>
-                    @endguest
-                </ul>
-            </div>
-        </nav>
-
+        <div class="navbar-fixed">
+            <nav class="pink darken-4">
+                <div class="nav-wrapper">
+                    <a class="brand-logo left" href="{{ url('/home') }}">
+                        <img src="{{ asset('images/uplogo_sm.png') }}">
+                        <span>CAS</span>
+                        <span>DMS</span>
+                    </a>
+                    <ul class="right">
+                        @guest
+                            <li><a class="nav-link" href="{{ url('/') }}">{{ __('Login') }}</a></li>
+                        @else
+                            <li><a href="#!/" class="pink-text text-darken-1"><i class="material-icons">home</i></a></li>
+                            <li><a href="#!/filesLog" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
+                            <li><a href="#!/users" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
+                            <li><a href="#!/staff" class="pink-text text-darken-1"><i class="material-icons">group</i></a></li>
+                            <li>
+                                <a class="dropdown-trigger btn-flat grey-text text-lighten-3" data-target="options" href="#" role="button">
+                                    {{ Auth::user()->name }} 
+                                    <i class="material-icons right">arrow_drop_down</i>
+                                </a>
+                                <ul id="options" class='dropdown-content'>
+                                    <li><a class="red-text" id="logout" href="{{ route('logout') }}"> Logout </a></li>
+                                </ul>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </nav>
+        </div>
         <form id="logout-form" class="hidden" action="{{ route('logout') }}" method="POST"> @csrf </form>
 
         <main class="py-4">
@@ -56,7 +57,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <!-- <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script> -->
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">
