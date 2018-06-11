@@ -73,27 +73,37 @@
         </button>
     </div>
     <a href="#" class="btn btn-success modal-trigger" id="add-button" data-target="add-modal">
-        <i class="material-icons">add</i> Add Account 
+        <i class="material-icons">add</i> Add Account
     </a>
 </div>
+<!-- Initial view at the center -->
 <div class="container">
     <div class="row">
         <div class="col s12">
             <h4>Admin</h4>
             <ul class="collection">
-                <a href="#" class="collection-item"> Rosiebelt Jun Abisado </a>
+                @forelse ($admins as $admin)
+                    <a href="#" class="collection-item"> {{ $admin->getUser->name }}</a>
+                @empty
+                    <a href="#" class="collection-item">No Admin</a>
+                @endforelse
             </ul>
             <h4>Staff</h4>
             <ul class="collection">
-                <a href="#" class="collection-item"> Clyde Joshua Delgado </a>
+                @forelse ($staffs as $staff)
+                    <a href="#" class="collection-item"> {{ $staff->getUser->name }} </a>
+                @empty
+                    <a href="#" class="collection-item"> No Staff </a>
+                @endforelse
             </ul>
         </div>
     </div>
 </div>
+
 <div id="add-modal" class="modal">
     <div class="modal-content">
         <h5>Add Account</h5>
-        <form method="POST" action="{{ route('register') }}" id="register-form">
+        <form method="POST" action="{{ route('create.account') }}" id="register-form">
             @csrf
 
 
@@ -187,58 +197,64 @@
             } else {
                 $("#register").addClass("disabled")
             }
-        }  
+        }
 
         function validUsername(){
             let username = $("#username").val()
-                        
+
             if (username) {
                 return true
             }
             return false
         }
- 
+
 
 
         function validName(){
             let name = $("#name").val()
-            
+
             if (name) {
                 return true
             }
             return false
         }
-        
+
         function validEmail(){
             let email = $("#email").val()
-            
+
             if (email) {
                 return true
             }
             return false
         }
-        
+
         function validGroup(){
             let group = $("#group").val()
-            
-            if (group) {
+            let type = $('input[name=type]:checked').val()
+
+            if(type == 'staff'){
+                $('#group').prop('required', false)
                 return true
+            }else if (type == 'admin' && group){
+                $('#group').prop('required', true)
+                return true
+            }else{
+                return false
             }
-            return false
         }
-        
+
         function validPassword(){
             let password = $("#password").val()
-            
+
             if (password) {
                 return true
             }
             return false
         }
-        
+
         function validConfirmPass(){
             let confirmPass = $("#password-confirm").val()
-            
+
             if (confirmPass) {
                 return true
             }
@@ -253,6 +269,6 @@
 
         $("#admin").click(function(){$("#group-field").slideDown(150)})
         $("#staff").click(function(){$("#group-field").slideUp(150)})
-        
+
     </script>
 @endpush

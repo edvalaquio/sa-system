@@ -13,24 +13,28 @@
         </button>
     </div>
     <a href="#" class="btn btn-success modal-trigger" id="add-button" data-target="add-modal">
-        <i class="material-icons">add</i> Received 
+        <i class="material-icons">add</i> Received
     </a>
 </div>
 <div class="container">
     <div class="row justify-content-center">
+        @forelse ($received as $receive)
         <div class="col-md-8">
             <div class="card card-default">
                 <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
+                    <a href="#" class="title"><h4 class="truncate">{{ $receive->title }}</h4></a>
+                    <p class="particular">{{ $receive->description }}</p>
                     <section class="additional-details">
                         <span class="type received"><i class="material-icons">inbox</i>&nbsp;Received,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
+                        <span class="timestamp">{{ date('F d Y', strtotime($receive->created_at)) }}</span>
                         <span class="status pending">Pending</span>
                     </section>
                 </div>
             </div>
         </div>
+        @empty
+            No Data
+        @endforelse
     </div>
 </div>
 <div id="add-modal" class="modal">
@@ -38,7 +42,8 @@
         <h4>Add Received</h4>
         <a href="#" class="modal-close close-btn"><i class="material-icons">clear</i></a>
 
-        <form>
+        <form method="post" action="{{ route('create.receive') }}" enctype="multipart/form-data">
+            @csrf
             <div class="file-field input-field">
                 <div class="btn btn-large amber accent-4">
                     <span><i class="material-icons">attach_file</i></span>
@@ -95,7 +100,7 @@
             secondaryPlaceholder: '+Tag',
         })
 
-        $('.chips-autocomplete').chips({    
+        $('.chips-autocomplete').chips({
             autocompleteOptions: {
               data: {
                 'Apple': null,

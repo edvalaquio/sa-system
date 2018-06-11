@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReceivedTable extends Migration
+class CreateTransactTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateReceivedTable extends Migration
      */
     public function up()
     {
-        Schema::create('received', function (Blueprint $table) {
-            $table->integer('user_id');
+        Schema::create('transact', function (Blueprint $table) {
+            $table->integer('sender_id')->nullable();
+            $table->integer('receiver_id')->nullable();
             $table->integer('transaction_id');
+            $table->string('note');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateReceivedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('received');
+        Schema::dropIfExists('transact');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transaction;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,8 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all();
-        return view('home');
+        // $transactions = Transaction::join('');
+        $transactions = DB::table('transact')
+        ->join('transactions', 'transaction_id', '=', 'id')
+        ->where('sender_id', Auth::user()->id)
+        ->orWhere('receiver_id', Auth::user()->id)
+        ->count();
+        // return $transactions;
+        return view('home', compact('transactions'));
     }
 
 }

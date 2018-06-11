@@ -22,23 +22,27 @@
         </button>
     </div>
     <a href="#" class="btn btn-success modal-trigger" id="add-button" data-target="add-modal">
-        <i class="material-icons">add</i> Sent 
+        <i class="material-icons">add</i> Sent
     </a>
 </div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status pending">Pending</span>
-                    </section>
+            @forelse ($sent as $send)
+                <div class="card card-default">
+                    <div class="card-body">
+                        <a href="#" class="title"><h4 class="truncate">{{ $send->title }}</h4></a>
+                        <p class="particular">{{ $send->description }}</p>
+                        <section class="additional-details">
+                            <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
+                            <span class="timestamp">{{ date('F d Y', strtotime($send->created_at)) }}</span>
+                            <span class="status pending">Pending</span>
+                        </section>
+                    </div>
                 </div>
-            </div>
+            @empty
+                No Data
+            @endforelse
         </div>
     </div>
 </div>
@@ -47,7 +51,8 @@
         <h4>Add Sent</h4>
         <a href="#" class="modal-close close-btn"><i class="material-icons">clear</i></a>
 
-        <form>
+        <form method="post" action="{{ route('create.send') }}">
+            @csrf
             <div class="file-field input-field">
                 <div class="btn btn-large amber accent-4">
                     <span><i class="material-icons">attach_file</i></span>
@@ -104,7 +109,7 @@
             secondaryPlaceholder: '+Tag',
         })
 
-        $('.chips-autocomplete').chips({    
+        $('.chips-autocomplete').chips({
             autocompleteOptions: {
               data: {
                 'Apple': null,

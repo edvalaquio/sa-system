@@ -53,6 +53,7 @@ class MainController extends Controller
             'email' => 'admin',
             'username' => 'admin',
             'gender' => 'male',
+            'status' => 'ok',
             'type' => 'admin',
             'password' => Hash::make('admin1'),
         ]);

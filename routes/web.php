@@ -21,13 +21,16 @@ Route::get('transaction', "TransactionController@index");
 Route::get('test', "MainController@testFunction");
 Route::post('testPut', "AdminController@addStaff");
 
+// create
+Route::post('/receive/createReceive', "ReceiveController@createReceive")->name('create.receive');
+Route::post('/send/createSend', "SendController@createSend")->name('create.send');
+Route::post('/account/createAccount', "AccountController@addAccount")->name('create.account');
 
 // first run add user
 Route::get('/addAdmin', "MainController@addFirstUser");
+
 // admin routes
 Route::get('admin', "AdminController@index")->middleware('auth');
-Route::get('admin/addStaff', "AdminController@addStaff")->middleware('auth');
-
 // staff routes
 
 

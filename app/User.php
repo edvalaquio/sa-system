@@ -36,4 +36,12 @@ class User extends Authenticatable
             return $this->hasOne('App\Staff');
         }
     }
+
+    // public function received(){
+    //     return $this->belongsToMany('App\Transaction', 'receiver_id', 'transaction_id')->using('App\Transact')->as('transact');
+    // }
+    //
+    // public function sent(){
+    //     return $this->belongsToMany('App\Transaction', 'transact', 'sender_id', 'transaction_id')->using('App\Transact');
+    // }
 }
