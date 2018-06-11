@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transaction;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $transactions = Transaction::all();
+        return view('index');
+        // return view('home');
     }
+
 }

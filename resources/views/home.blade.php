@@ -35,38 +35,3 @@
     </div>
 </div>
 @endsection
-
-<!-- <div class="card">
-    <div class="card-header">Transaction</div>
-
-    <div class="card-body">
-        <table>
-            <tr>
-                <th>Time</th>
-                <th>Date</th> 
-                <th>Particular</th>
-                <th>Type</th>
-                <th>Status</th>
-            </tr>
-            <tr>
-                <td>9:00am</td>
-                <td>January 28, 2018</td>
-                <td>Required Signature from Dean</td>
-                <td>received</td>
-                <td>pending</td>
-            </tr>
-        </table>
-
-    </div>
-</div> -->
-
-<!-- <td>
-    <button class="btn btn-primary">View</button>
-    <button class="btn btn-success">Download</button>
-</td> -->
-
-<!-- <form>
-    <input type="text" name="name">
-    <input type="file" name="file">
-    <button type="submit"></button>
-</form> -->

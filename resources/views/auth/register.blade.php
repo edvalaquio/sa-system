@@ -24,8 +24,6 @@
 
         .radio-buttons label:not(:first-child){
             margin-right: 1em;
-            /*border: 1px solid #DDD;
-            border-radius: 4px;*/
             padding: 0 0.5em 0 0.25em;
         }
 

@@ -8,12 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'CASDMS') }}</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/materialize.min.css') }}">
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
@@ -30,9 +29,10 @@
                     @guest
                         <li><a class="nav-link" href="{{ url('/') }}">{{ __('Login') }}</a></li>
                     @else
-                        <li><a href="/received" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
-                        <li><a href="/sent" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
-                        <li><a href="/accounts" class="pink-text text-darken-1"><i class="material-icons">group</i></a></li>
+                        <li><a href="#!/" class="pink-text text-darken-1"><i class="material-icons">home</i></a></li>
+                        <li><a href="#!/filesLog" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
+                        <li><a href="#!/users" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
+                        <li><a href="#!/staff" class="pink-text text-darken-1"><i class="material-icons">group</i></a></li>
                         <li>
                             <a class="dropdown-trigger btn-flat grey-text text-lighten-3" data-target="options" href="#" role="button">
                                 {{ Auth::user()->name }} 
@@ -56,7 +56,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script> -->
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">
         $('.dropdown-trigger').dropdown();

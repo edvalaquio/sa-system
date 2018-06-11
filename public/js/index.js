@@ -9,28 +9,25 @@ angular.module("indexApp",
 	function($routeProvider, $locationProvider){
 		$routeProvider
 		.when("/", {
-			templateUrl: "/partials/home.html"
+			templateUrl: 	"/partials/home.html"
 		})
-		.when("/filesLog", {
-			templateUrl: "/partials/filesLog.html",
-			controller: "filesLogController"
+		.when("/sent", {
+			templateUrl: 	"/partials/sent.html",
+			controller: 	"filesController"
+		})
+		.when("/received", {
+			templateUrl: 	"/partials/received.html",
+			controller: 	"filesController"	
 		})
 		.when("/users", {
-			templateUrl: "/partials/users.html",
-			controller: "userController"
+			templateUrl: 	"/partials/users.html",
+			controller: 	"userController"
 		})
-		.when("/login", {
-			templateUrl: "/partials/login.html"
-		})
-		.when("/staff", {
-			templateUrl: "/partials/staff_home.html"
-		});
-
-		// .when("/", {
-		// 	templateUrl: "/partials/home.php",
-		// 	controller: "sample"
-		// })
 	}
 ])
+.config(["$interpolateProvider", function($interpolateProvider) {
+    $interpolateProvider.startSymbol("[[");
+    $interpolateProvider.endSymbol("]]");
+}]);
 
 // Add this directive where you keep your directive

@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->string('comment');
             $table->string('description');
             $table->boolean('has_documents');
+            $table->string('status');
             $table->timestamps();
         });
     }
