@@ -66,6 +66,14 @@
                     </div>
 
 
+                    <div class="input-field">
+                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                        <label for="email">E-mail Address</label>
+                        @if ($errors->has('email'))
+                            <span class="helper-text error">{{ $errors->first('email') }}</span>
+                        @endif
+                    </div>
+
                     <div class="radio-buttons">
                         <label>Gender</label>
                         <label>
@@ -78,23 +86,26 @@
                         </label>
                     </div>
 
-                    <div class="input-field">
-                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-                        <label for="email">E-mail Address</label>
-                        @if ($errors->has('email'))
-                            <span class="helper-text error">{{ $errors->first('email') }}</span>
-                        @endif
+                    <div class="radio-buttons">
+                        <label>Type</label>
+                        <label id="admin">
+                            <input type="radio" value="admin" name="type" checked>
+                            <span>Admin</span>
+                        </label>
+                        <label id="staff">
+                            <input type="radio" value="staff" name="type">
+                            <span>Staff</span>
+                        </label>
                     </div>
 
-
-                    <div class="input-field">
+                    <div class="input-field" id="group-field">
                         <input id="group" type="text" class="form-control{{ $errors->has('group') ? ' is-invalid' : '' }}" name="group" value="{{ old('group') }}" required>
                         <label for="group">Group</label>
                     </div>
 
                     <div class="input-field">
                         <span class="check-pass" id="show-pass"><i class="material-icons">visibility</i></span>
-                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                        <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                         <label for="password">Password</label>
                         @if ($errors->has('password'))
                             <span class="helper-text error">{{ $errors->first('password') }}</span>
@@ -104,11 +115,11 @@
 
                     <div class="input-field">
                         <span class="check-pass" id="show-passC"><i class="material-icons">visibility</i></span>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                        <input id="password-confirm" type="password" name="password_confirmation" required>
                         <label for="password-confirm">Confirm Password</label>
                     </div>
 
-                    <button type="submit" id="register" class="btn btn-block amber accent-4 disabled hidden"> Register </button>
+                    <button type="submit" id="register" class="btn btn-block amber accent-4 disabled"> Register </button>
                 </form>
         </div>
     </div>
@@ -123,10 +134,8 @@
         function validateForm(){
             if (validUsername() && validName() && validEmail() && validGroup() && validPassword() && validConfirmPass()){
                 $("#register").removeClass("disabled")
-                $("#register").slideDown()
             } else {
                 $("#register").addClass("disabled")
-                $("#register").slideUp()
             }
         }  
 
@@ -191,6 +200,9 @@
 
         function showPassword(target){ $(target + " ~ input[type='password']").eq(0).attr("type", "text") }
         function hidePassword(target){ $(target + " ~ input[type='text']").eq(0).attr("type", "password") }
+
+        $("#admin").click(function(){$("#group-field").slideDown(150)})
+        $("#staff").click(function(){$("#group-field").slideUp(150)})
         
     </script>
 @endpush
