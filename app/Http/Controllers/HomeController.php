@@ -28,10 +28,10 @@ class HomeController extends Controller
     {
         // $transactions = Transaction::join('');
         $transactions = DB::table('transact')
-        ->join('transactions', 'transaction_id', '=', 'id')
+        ->join('transactions', 'transaction_id', '=', 'transact.id')
         ->where('sender_id', Auth::user()->id)
         ->orWhere('receiver_id', Auth::user()->id)
-        ->count();
+        ->get();
         // return $transactions;
         return view('home', compact('transactions'));
     }
