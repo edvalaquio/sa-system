@@ -31,8 +31,8 @@
                             <li><a class="nav-link" href="{{ url('/') }}">{{ __('Login') }}</a></li>
                         @else
                             <li><a href="#!/" class="pink-text text-darken-1"><i class="material-icons">home</i></a></li>
-                            <li><a href="#!/filesLog" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
-                            <li><a href="#!/users" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
+                            <li><a href="#!/received" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
+                            <li><a href="#!/sent" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
                             <li><a href="#!/staff" class="pink-text text-darken-1"><i class="material-icons">group</i></a></li>
                             <li>
                                 <a class="dropdown-trigger btn-flat grey-text text-lighten-3" data-target="options" href="#" role="button">
@@ -57,7 +57,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">
         $('.dropdown-trigger').dropdown();
@@ -67,7 +67,6 @@
             $("#logout-form").submit()
         })
     </script>
-
     @stack('scripts')
 </body>
 </html>

@@ -3,24 +3,24 @@
 angular.module("indexApp",
 	["ngRoute",
 	"controllers.userController",
-	"controllers.filesLogController", 
-	"controllers.modalController"])
+	"controllers.filesCtrl",
+	'ui.materialize'])
 .config(["$routeProvider", "$locationProvider",
 	function($routeProvider, $locationProvider){
 		$routeProvider
 		.when("/", {
-			templateUrl: 	"/partials/home.html"
+			templateUrl: 	"/templates/home.html" 
 		})
 		.when("/sent", {
-			templateUrl: 	"/partials/sent.html",
-			controller: 	"filesController"
+			templateUrl: 	"/templates/sent.html",
+			controller: 	"filesCtrl"
 		})
 		.when("/received", {
-			templateUrl: 	"/partials/received.html",
-			controller: 	"filesController"	
+			templateUrl: 	"/templates/received.html",
+			controller: 	"filesCtrl"	
 		})
 		.when("/users", {
-			templateUrl: 	"/partials/users.html",
+			templateUrl: 	"/templates/users.html",
 			controller: 	"userController"
 		})
 	}
