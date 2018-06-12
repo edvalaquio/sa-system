@@ -2,35 +2,37 @@
 
 angular.module("indexApp",
 	["ngRoute",
-	"controllers.userController",
-	"controllers.filesLogController", 
-	"controllers.modalController"])
+	"controllers.accountsCtrl",
+	"controllers.homeCtrl",
+	"controllers.filesCtrl",
+	'ui.materialize'])
 .config(["$routeProvider", "$locationProvider",
 	function($routeProvider, $locationProvider){
 		$routeProvider
 		.when("/", {
-			templateUrl: "/partials/home.html"
+			templateUrl: 	"/templates/home.html"
+			// controller:		"homeCtrl"
 		})
-		.when("/filesLog", {
-			templateUrl: "/partials/filesLog.html",
-			controller: "filesLogController"
+		.when("/sent", {
+			templateUrl: 	"/templates/sent.html",
+			controller: 	"filesCtrl"
 		})
-		.when("/users", {
-			templateUrl: "/partials/users.html",
-			controller: "userController"
+		.when("/received", {
+			templateUrl: 	"/templates/received.html",
+			controller: 	"filesCtrl"
 		})
-		.when("/login", {
-			templateUrl: "/partials/login.html"
+		.when("/accounts", {
+			templateUrl: 	"/templates/accounts.html",
+			controller: 	"accountsCtrl"
 		})
-		.when("/staff", {
-			templateUrl: "/partials/staff_home.html"
-		});
-
-		// .when("/", {
-		// 	templateUrl: "/partials/home.php",
-		// 	controller: "sample"
-		// })
 	}
 ])
+.config(["$interpolateProvider", function($interpolateProvider) {
+    $interpolateProvider.startSymbol("[[");
+    $interpolateProvider.endSymbol("]]");
+}])
+.config(["$qProvider", function($qProvider){
+	 $qProvider.errorOnUnhandledRejections(false)
+}])
 
 // Add this directive where you keep your directive

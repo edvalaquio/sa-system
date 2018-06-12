@@ -17,7 +17,7 @@ class ReceiveController extends Controller
             ->get();
         // return $received;
         return view('received', compact('received'));
-    }
+    } 
 
     public function createReceive(Request $request){
         $document = 0;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transaction;
+use App\Transact;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -43,7 +44,12 @@ class SendController extends Controller
         return redirect('/sent');
     }
 
-    public function sendTransaction(){
-        
+    public function sendTransaction(Request $request){
+        Transact::create([
+            'sender_id' => $request->sender_id,
+            'receiver_id' => $request->receiver_id,
+            'note' => $request->note,
+            'transaction_id' => $request->transaction_id,
+        ]);
     }
 }

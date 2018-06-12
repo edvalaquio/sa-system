@@ -18,9 +18,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <p class="particular">Requires Signature from Dean. 
+                    <p class="particular">Requires Signature from Dean.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. 
+                        tempor incididunt ut labore et dolore magna aliqua.
                     </p>
 
                     <h6>Attachments:</h6>
@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="card-footer">
-                    <a href="/transaction" class="btn light-blue">View Transaction</a>
+                    <a href="/transaction/1" class="btn light-blue">View Transaction</a>
                 </div>
             </div>
         </div>
@@ -46,87 +46,27 @@
                     <li><a href="#!">TODAY</a></li>
                     <li><a href="#!">YESTERDAY</a></li>
                     <li><input type="text" id="date" name="date" class="datepicker" placeholder="OTHER DATES"></li>
-                </ul>              
+                </ul>
             </div>
-
+            @forelse ($transactions as $transaction)
             <div class="card card-default">
                 <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
+                    <a href="#" class="title"><h4 class="truncate">{{ $transaction->title }}</h4></a>
+                    <p class="particular">{{ $transaction->description }}</p>
                     <section class="additional-details">
-                        <span class="type received"><i class="material-icons">inbox</i>&nbsp;Received,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
+                        @if($transaction->receiver_id == Auth::user()->id)
+                            <span class="type received"><i class="material-icons">inbox</i>&nbsp;Receive,&nbsp;</span>
+                        @else
+                            <span class="type received"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
+                        @endif
+                        <span class="timestamp">{{ date('F d Y', strtotime($transaction->created_at)) }}</span>
                         <span class="status pending">Pending</span>
                     </section>
                 </div>
             </div>
-
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
+            @empty
+                No Data
+            @endforelse
         </div>
     </div>
 </div>

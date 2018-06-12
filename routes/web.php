@@ -17,7 +17,7 @@ Route::get('home', "HomeController@index");
 Route::get('sent', "SendController@index");
 Route::get('received', "ReceiveController@index");
 Route::get('accounts', "AccountController@index");
-Route::get('transaction', "TransactionController@index");
+Route::get('transaction/{transaction_id}', "TransactionController@index");
 Route::get('test', "MainController@testFunction");
 Route::post('testPut', "AdminController@addStaff");
 

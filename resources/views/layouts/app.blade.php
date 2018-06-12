@@ -30,13 +30,13 @@
                         @guest
                             <li><a class="nav-link" href="{{ url('/') }}">{{ __('Login') }}</a></li>
                         @else
-                            <li><a href="/home" class="pink-text text-darken-1"><i class="material-icons">home</i></a></li>
-                            <li><a href="/received" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
-                            <li><a href="/sent" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
-                            <li><a href="/accounts" class="pink-text text-darken-1"><i class="material-icons">group</i></a></li>
+                            <li><a href="#!/" class="pink-text text-darken-1"><i class="material-icons">home</i></a></li>
+                            <li><a href="#!/received" class="pink-text text-darken-1"><i class="material-icons">inbox</i></a></li>
+                            <li><a href="#!/sent" class="pink-text text-darken-1"><i class="material-icons">near_me</i></a></li>
+                            <li><a href="#!/accounts" class="pink-text text-darken-1"><i class="material-icons">group</i></a></li>
                             <li>
                                 <a class="dropdown-trigger btn-flat grey-text text-lighten-3" data-target="options" href="#" role="button">
-                                    {{ Auth::user()->name }} 
+                                    {{ Auth::user()->name }}
                                     <i class="material-icons right">arrow_drop_down</i>
                                 </a>
                                 <ul id="options" class='dropdown-content'>
@@ -48,7 +48,6 @@
                 </div>
             </nav>
         </div>
-
         <form id="logout-form" class="hidden" action="{{ route('logout') }}" method="POST"> @csrf </form>
 
         <main class="py-4">
@@ -58,7 +57,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
     <script type="text/javascript">
         $('.dropdown-trigger').dropdown();
@@ -68,7 +67,6 @@
             $("#logout-form").submit()
         })
     </script>
-
     @stack('scripts')
 </body>
 </html>

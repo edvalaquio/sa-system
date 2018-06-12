@@ -14,6 +14,7 @@ class CreateTransactTable extends Migration
     public function up()
     {
         Schema::create('transact', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('sender_id')->nullable();
             $table->integer('receiver_id')->nullable();
             $table->integer('transaction_id');

@@ -12,6 +12,7 @@ use App\User;
 
 class MainController extends Controller
 {
+
     // test function
     public function testFunction(){
         return view('test');
@@ -32,7 +33,8 @@ class MainController extends Controller
       if(Auth::check()){
           if(Auth::user()->status != "deleted"){
               if(Auth::user()->type == "admin"){
-                  return redirect('/home');
+                  // return redirect('/home');
+                  return view('index');
               }
           }else{
               return view('accountDeleted');
