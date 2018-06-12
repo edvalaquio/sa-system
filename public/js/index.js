@@ -2,7 +2,7 @@
 
 angular.module("indexApp",
 	["ngRoute",
-	"controllers.userController",
+	"controllers.accountsCtrl",
 	"controllers.filesCtrl",
 	'ui.materialize'])
 .config(["$routeProvider", "$locationProvider",
@@ -19,15 +19,18 @@ angular.module("indexApp",
 			templateUrl: 	"/templates/received.html",
 			controller: 	"filesCtrl"	
 		})
-		.when("/users", {
-			templateUrl: 	"/templates/users.html",
-			controller: 	"userController"
+		.when("/accounts", {
+			templateUrl: 	"/templates/accounts.html",
+			controller: 	"accountsCtrl"
 		})
 	}
 ])
 .config(["$interpolateProvider", function($interpolateProvider) {
     $interpolateProvider.startSymbol("[[");
     $interpolateProvider.endSymbol("]]");
-}]);
+}])
+.config(["$qProvider", function($qProvider){
+	 $qProvider.errorOnUnhandledRejections(false)
+}])
 
 // Add this directive where you keep your directive
