@@ -32,7 +32,7 @@ class HomeController extends Controller
         ->where('sender_id', Auth::user()->id)
         ->orWhere('receiver_id', Auth::user()->id)
         ->get();
-        return view('index');
+        return json_encode($transactions);
         // return $transactions;
         return view('home', compact('transactions'));
     }

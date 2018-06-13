@@ -10,8 +10,8 @@ angular.module("indexApp",
 	function($routeProvider, $locationProvider){
 		$routeProvider
 		.when("/", {
-			templateUrl: 	"/templates/home.html"
-			// controller:		"homeCtrl"
+			templateUrl: 	"/templates/home.html",
+			controller:		"homeCtrl"
 		})
 		.when("/sent", {
 			templateUrl: 	"/templates/sent.html",

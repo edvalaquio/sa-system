@@ -20,7 +20,7 @@ Route::get('accounts', "AccountController@index");
 Route::get('transaction/{transaction_id}', "TransactionController@index");
 Route::get('test', "MainController@testFunction");
 Route::post('testPut', "AdminController@addStaff");
-
+Route::post('home', "HomeController@index");
 // create
 Route::post('/receive/createReceive', "ReceiveController@createReceive")->name('create.receive');
 Route::post('/send/createSend', "SendController@createSend")->name('create.send');
