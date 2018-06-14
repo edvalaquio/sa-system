@@ -19,11 +19,19 @@ Route::get('received', "ReceiveController@index");
 Route::get('accounts', "AccountController@index");
 Route::get('transaction/{transaction_id}', "TransactionController@index");
 Route::get('test', "MainController@testFunction");
+
 Route::post('testPut', "AdminController@addStaff");
 Route::post('home', "HomeController@index");
-// create
-Route::post('/receive/createReceive', "ReceiveController@createReceive")->name('create.receive');
-Route::post('/send/createSend', "SendController@createSend")->name('create.send');
+
+// Samples
+Route::post('/receive/create', "ReceiveController@createReceive")->name('create.receive');
+Route::post('/send/create', "SendController@createSend")->name('create.send');
+
+Route::post('/send/createSample', "SendController@createSendSample")->name('create.sendSample');
+
+// Create Originals
+// Route::post('/receive/createReceive', "ReceiveController@createReceive")->name('create.receive');
+// Route::post('/send/createSend', "SendController@createSend")->name('create.send');
 Route::post('/account/createAccount', "AccountController@addAccount")->name('create.account');
 
 // first run add user

@@ -30,6 +30,7 @@ angular.module("indexApp",
     $interpolateProvider.startSymbol("[[");
     $interpolateProvider.endSymbol("]]");
 }])
+.constant('apiUrl', 'localhost:8000/');
 // .config(["$qProvider", function($qProvider){
 // 	 $qProvider.errorOnUnhandledRejections(false)
 // }])

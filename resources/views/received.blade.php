@@ -83,7 +83,7 @@
     $(document).ready(function(){
         $(".modal").modal()
 
-         $('.chips').chips()
+        $('.chips').chips()
 
         $('.chips-initial').chips({
             data: [{

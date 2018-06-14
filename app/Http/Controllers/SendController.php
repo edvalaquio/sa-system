@@ -41,7 +41,11 @@ class SendController extends Controller
             'created_at' =>  \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);
-        return redirect('/sent');
+        return "Success";
+    }
+
+    public function createSendSample(Request $request){
+        return $request->data;
     }
 
     public function sendTransaction(Request $request){

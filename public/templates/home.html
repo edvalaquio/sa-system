@@ -7,7 +7,7 @@
         <div ng-show="transactions" class="col s12 m8 l6">
             <div class="card card-default preview">
                 <div class="card-header">
-                    <span class="status" ng-class="{'pending': viewTransaction.status == 'Pending', 'complete': viewTransaction.status == 'Approved'}">
+                    <span class="status" ng-class="{'pending': viewTransaction .status == 'Pending', 'complete': viewTransaction .status == 'Approved'}">
                         [[viewTransaction.status]]
                     </span>
                     <a class="title"><h4>[[viewTransaction.title]]</h4></a>
