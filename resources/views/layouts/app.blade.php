@@ -58,7 +58,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bower_components/materialize/dist/js/materialize.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script> -->
     <script type="text/javascript">
         $('.dropdown-trigger').dropdown();
 

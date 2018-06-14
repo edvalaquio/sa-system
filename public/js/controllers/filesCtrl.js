@@ -3,6 +3,7 @@ var files = angular.module("controllers.filesCtrl", [])
 
 files.controller("filesCtrl", ["$rootScope", "$scope", "$window", "$location", "$http",
 	function($rootScope, $scope, $window, $location, $http){
+		$('.modal').modal();
 	// 	console.log("Here in filesLogController");
 
 	// 	if(!$window.localStorage['filesData']){

@@ -36,10 +36,11 @@
             <div class="fiter">
                 <!-- <button class="dropdown-trigger btn-flat" data-target="date-filter"><i class="material-icons">date_range</i></button>   -->
                 <ul id="date-filter">
-                    <li><a href="#!">TODAY</a></li>
-                    <li><a href="#!">YESTERDAY</a></li>
+                    <li><a href="#">TODAY</a></li>
+                    <li><a href="#">YESTERDAY</a></li>
                     <li>
-                        <input input-date type="text" id="date" name="date" ng-model="date" class="datepicker" placeholder="OTHER DATES">
+                        <!-- <input input-date type="text" id="date" name="date" ng-model="date" class="datepicker" placeholder="OTHER DATES"> -->
+                        <input type="text" class="datepicker" placeholder="OTHER DATES" ng-model="dates"/>
                     </li>
                 </ul>
             </div>
@@ -125,3 +126,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    // $(document).ready(function(){
+    //     $('.datepicker').datepicker()
+    // })
+</script>

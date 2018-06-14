@@ -11,9 +11,12 @@
 @endsection
 
 @push('styles')
+
+
 <script type="text/javascript" src="{{ asset('/bower_components/angular/angular.js')}}"></script>
 <script type="text/javascript" src="{{ asset('/bower_components/angular-route/angular-route.js')}}"></script>
-<script type="text/javascript" src="{{ asset('/js/angular-materialize.min.js')}}"></script>
+<!-- <script type="text/javascript" src="{{ asset('/js/angular-materialize.min.js')}}"></script> -->
+<!-- <script type="text/javascript" src="{{ asset('/bower_components/angular-materialize/src/angular-materialize.js')}}"></script> -->
 <script type="text/javascript" src="{{ asset('/js/index.js')}}"></script>
 <script type="text/javascript" src="{{ asset('/js/controllers/filesCtrl.js')}}"></script>
 <script type="text/javascript" src="{{ asset('/js/controllers/homeCtrl.js')}}"></script>
