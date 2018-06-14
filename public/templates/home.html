@@ -1,20 +1,27 @@
 <div class="container">
     <div class="row">
-        <div class="col s12 m8 l6">
+        <div ng-show="!transactions">
+            <!-- Needs Loading kit -->
+            <h2>Loading transactions...</h2>
+        </div>
+        <div ng-show="transactions" class="col s12 m8 l6">
             <div class="card card-default preview">
                 <div class="card-header">
-                    <span class="status complete">Complete</span>
-                    <a href="#" class="title"><h4>Requires Signature from Dean</h4></a>
+                    <span class="status" ng-class="{'pending': viewTransaction.status == 'Pending', 'complete': viewTransaction.status == 'Approved'}">
+                        [[viewTransaction.status]]
+                    </span>
+                    <a class="title"><h4>[[viewTransaction.title]]</h4></a>
                     <div class="additional-details">
-                        <span class="type received"><i class="material-icons">inbox</i>&nbsp;Received,&nbsp;</span>
-                        <span class="timestamp">December 25, 2018, 9:32 am</span>
+                        <span class="type" ng-class="{'sent': viewTransaction.type == 'Sent', 'received': viewTransaction.type == 'Received'}">
+                            <i ng-if="viewTransaction.type=='Received'" class="material-icons">inbox</i>
+                            <i ng-if="viewTransaction.type=='Sent'"  class="material-icons">near_me</i>
+                            &nbsp;[[viewTransaction.type]],&nbsp;
+                        </span>
+                        <span class="timestamp">[[viewTransaction.date]]</span>
                     </div>
                 </div>
                 <div class="card-body">
-                    <p class="particular">Requires Signature from Dean.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
+                    <p class="particular">[[viewTransaction.description]]</p>
 
                     <h6>Attachments:</h6>
                     <ul class="files">
@@ -22,9 +29,7 @@
                         Guidelines_for_Thesis.pdf</li>
                     </ul>
 
-                    <p class="note">
-                        This is a note. Users can add these to inform the receiver of the document.
-                    </p>
+                    <p class="note">[[viewTransaction.note]]</p>
 
                 </div>
                 <div class="card-footer">
@@ -32,103 +37,31 @@
                 </div>
             </div>
         </div>
-        <div class="col s12 m4 l6">
+        <div ng-show="transactions" class="col s12 m4 l6">
             <div class="fiter">
-                <!-- <button class="dropdown-trigger btn-flat" data-target="date-filter"><i class="material-icons">date_range</i></button>   -->
                 <ul id="date-filter">
-                    <li><a href="#">TODAY</a></li>
-                    <li><a href="#">YESTERDAY</a></li>
+                    <li><a>TODAY</a></li>
+                    <li><a>YESTERDAY</a></li>
                     <li>
-                        <!-- <input input-date type="text" id="date" name="date" ng-model="date" class="datepicker" placeholder="OTHER DATES"> -->
                         <input type="text" class="datepicker" placeholder="OTHER DATES" ng-model="dates"/>
                     </li>
                 </ul>
             </div>
-
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
+            <div ng-repeat="t in transactions" class="card card-default">
+                <div class="card-body" ng-click="showTransaction(t)" style="cursor: pointer;">
+                    <a class="title"><h4 class="truncate">[[t.title]]</h4></a>
+                    <p class="particular">[[t.description]]</p>
                     <section class="additional-details">
-                        <span class="type received"><i class="material-icons">inbox</i>&nbsp;Received,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status pending">Pending</span>
-                    </section>
-                </div>
-            </div>
-
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
-                    </section>
-                </div>
-            </div>
-            <div class="card card-default">
-                <div class="card-body">
-                    <a href="#" class="title"><h4 class="truncate">Requires Signature from Dean</h4></a>
-                    <p class="particular">Requires Signature from Dean</p>
-                    <section class="additional-details">
-                        <span class="type sent"><i class="material-icons">near_me</i>&nbsp;Sent,&nbsp;</span>
-                        <span class="timestamp">March 2, 2018, 9:32 am</span>
-                        <span class="status complete">complete</span>
+                        <span class="type" ng-class="{'sent': t.type == 'Sent', 'received': t.type == 'Received'}">
+                            <i ng-if="t.type=='Received'" class="material-icons">inbox</i>
+                            <i ng-if="t.type=='Sent'"  class="material-icons">near_me</i>
+                            &nbsp;[[t.type]],&nbsp;
+                        </span>
+                        <span class="timestamp">[[t.date]]</span>
+                        <span class="status" ng-class="{'pending': t.status == 'Pending', 'complete': t.status == 'Approved'}">[[t.status]]</span>
                     </section>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    // $(document).ready(function(){
-    //     $('.datepicker').datepicker()
-    // })
-</script>

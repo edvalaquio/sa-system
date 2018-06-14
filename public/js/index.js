@@ -1,13 +1,5 @@
 'use strict';
 
-// angular.module("indexApp",
-// 	["ngRoute",
-// 	"controllers.accountsCtrl",
-// 	"controllers.homeCtrl",
-// 	"controllers.filesCtrl",
-// 	'ui.materialize',
-// 	'ui.materialize.input_date',
-// 	'ui.materialize.modal'])
 angular.module("indexApp",
 	["ngRoute",
 	"controllers.accountsCtrl",

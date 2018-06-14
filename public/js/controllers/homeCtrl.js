@@ -8,22 +8,20 @@ angular.module("controllers.homeCtrl", [])
 			console.log(response.data);
 		});
 	    $('.datepicker').datepicker();
-		// $scope.openPicker = function(){
-		// 	$scope.pickerF
-		// 	$('.datepicker').pickadate();
-		// }
-		// $(document).ready(function(){
-		// var picker = $('.datepicker').pickadate();
-		// console.log(M);
-		// });
-		// document.addEventListener('DOMContentLoaded', function() {
-		// var elems = document.querySelectorAll('.datepicker');
-		// console.log(elems);
-		// console.log(M);
-		// var instance = M.Datepicker.init(elems, options);
-			// console.log(instance);
-			// console.log("Hello");
-			// $scope.openPicker = instance.open;
-		// });
+
+		$http({
+			'method'	: 'GET', 
+			'url'		: '/js/transactions2.json',
+		}).then(function(res){
+			$scope.transactions = res.data;
+			$scope.viewTransaction = res.data[0]
+		}, function(error){
+			console.log(error);
+		});
+
+		$scope.showTransaction = function(data){
+			$scope.viewTransaction = data;
+		}
+
 	}
 ]);
